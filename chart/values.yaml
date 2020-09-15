@@ -1,0 +1,32 @@
+replicaCount: 1
+
+image:
+  repository: vbabichev/metrics-app
+  pullPolicy: IfNotPresent
+  tag: latest
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+  hosts:
+    - host: metrics-app.local
+      paths: []
+
+resources: {}
+tolerations: []
+affinity: {}
+
+metrics:
+  scanInterval: 10s
+  port: web
+
+alertRules: {}
+recordRules: {}

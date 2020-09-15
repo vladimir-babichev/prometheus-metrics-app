@@ -1,0 +1,15 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "metrics-app.fullname" . }}
+  labels:
+    release: prom-stack # Hack!
+    {{- include "metrics-app.labels" . | nindent 4 }}
+spec:
+  endpoints:
+  - interval: "{{ .Values.metrics.scanInterval }}"
+    port: "{{ .Values.metrics.port }}"
+  selector:
+    matchLabels:
+      {{- include "metrics-app.selectorLabels" . | nindent 6 }}

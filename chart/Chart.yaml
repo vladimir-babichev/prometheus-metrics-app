@@ -1,0 +1,5 @@
+apiVersion: v2
+name: metrics-app
+description: Metrics App
+version: 0.1.0
+appVersion: v0.3.0
