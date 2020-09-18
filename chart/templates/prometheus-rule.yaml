@@ -4,7 +4,7 @@ kind: PrometheusRule
 metadata:
   name: {{ include "metrics-app.fullname" . }}
   labels:
-    release: prom-stack # Hack
+    release: prometheus-operator # Hack
     {{- include "metrics-app.labels" . | nindent 4 }}
 spec:
   groups:

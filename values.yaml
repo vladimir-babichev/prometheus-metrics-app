@@ -17,7 +17,7 @@ alertRules:
     expr: histogram_quantile(0.9, http_request_duration_seconds_bucket{job="metrics-app"}) > 0.005
 
   - alert: 99%ile of requests processed in less then 0.05 sec
-    expr: histogram_quantile(0.9, http_request_duration_seconds_bucket{job="metrics-app"}) > 0.05
+    expr: histogram_quantile(0.99, http_request_duration_seconds_bucket{job="metrics-app"}) > 0.05
 
   - alert: SLO - Error requests to overall request ratio shouldn't exceed 5%
     expr: sli:errors_per_request:ratio_rate5m{job="metrics-app"} * 100 > 5
