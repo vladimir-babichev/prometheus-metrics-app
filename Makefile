@@ -3,11 +3,11 @@ APP_NAME := $(shell echo $(ROOT_DIR) | sed 's/.*\///; s/prometheus-//')
 
 IMAGE_TAG ?= latest
 IMAGE_NAME ?= vbabichev/$(APP_NAME)
-VERSION := $(shell cat $(ROOT_DIR)/app/VERSION)
+VERSION := $(shell cat $(ROOT_DIR)/src/VERSION)
 
 .PHONY: build
 build:
-	docker build --build-arg VERSION=$(VERSION) -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(ROOT_DIR)/Dockerfile $(ROOT_DIR)/app/
+	docker build --build-arg VERSION=$(VERSION) -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(ROOT_DIR)/Dockerfile $(ROOT_DIR)/src/
 
 .PHONY: install
 install:
