@@ -9,10 +9,6 @@ VERSION := $(shell cat $(ROOT_DIR)/src/VERSION)
 build:
 	docker build --build-arg VERSION=$(VERSION) -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(ROOT_DIR)/Dockerfile $(ROOT_DIR)/src/
 
-.PHONY: install
-install:
-	helm install -f values.yaml $(APP_NAME) chart/
-
-.PHONE: upgrade
-upgrade:
-	helm upgrade -f values.yaml $(APP_NAME) chart/
+.PHONY: deploy
+deploy:
+	helm upgrade -i -f values.yaml $(APP_NAME) chart/
